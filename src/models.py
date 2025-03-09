@@ -21,14 +21,7 @@ class User(db.Model):
     email:str = db.Column(db.String(50), nullable=False)
     def __repr__(self):
         return '<User %r>' % self.user_name
-    def serialize(self):
-        return {
-            "id":self.id,
-            "username":self.username,
-            "password":self.password,
-            "email":self.email,
-        }
-
+        
 @dataclass
 class Favourites(db.Model):
     __tablename__= "Favourites"
@@ -37,15 +30,6 @@ class Favourites(db.Model):
     name:str = db.Column(db.String(250), nullable=False, unique=True)
     external_id:int = db.Column(db.Integer, nullable=False)
     type:FavouritesType = db.Column(db.Enum(FavouritesType), nullable=False)
-
-    def serialize(self):
-        return {
-            "id":self.id,
-            "user_id":self.user_id,
-            "name":self.name,
-            "external_id":self.external_id,
-            "type":self.type,
-        }
 
 @dataclass
 class Films(db.Model):
@@ -61,16 +45,6 @@ class Films(db.Model):
     species:str = db.Column(db.String(250),  nullable=False)
     starships:str = db.Column(db.String(250), nullable=False)
     vehicles:str = db.Column(db.String(250), nullable=False)
-
-    def serialize(self):
-        return {
-            "id":self.id,
-            "title":self.title,
-            "director":self.director,
-            "people":self.people,
-            "vehicles":self.vehicles,
-        }
-
 
 @dataclass
 class Planets(db.Model):
@@ -129,7 +103,7 @@ class Vehicles(db.Model):
     crew:int = db.Column(db.Integer, nullable=False)
     edited = db.Column(db.String(250), nullable=False)
     length = db.Column(db.Integer, nullable=False)
-    manufacturer = db.Column(db.String(500), nullable=False)
+    manufacturer:str = db.Column(db.String(500), nullable=False)
     max_atmospheric_speed = db.Column(db.String(250), nullable=False)
     model:str = db.Column(db.String(250), nullable=False)
     name:str = db.Column(db.String(250), nullable=False)
