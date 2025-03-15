@@ -1,4 +1,4 @@
-import { NavigateBar } from "./components/Navbar";
+import { NavigateBar } from "./components/NavBar";
 import { People } from "./pages/People";
 import { Route, Routes } from "react-router";
 import { Films } from "./pages/Films";
