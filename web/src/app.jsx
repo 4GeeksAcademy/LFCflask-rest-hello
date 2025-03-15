@@ -9,12 +9,14 @@ import { FilmDetails } from "./pages/FilmDetails";
 import { Vehicles } from "./pages/Vehicles";
 import { Spaceships } from "./pages/Spaceships";
 import { Species } from "./pages/Species";
+import { Login } from "./pages/Login";
 
 export const App = () => {
   return (
     <>
       <NavigateBar />
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/films" element={<Films />} />
         <Route path="/films/:uid" element={<FilmDetails />} />
         <Route path="/people" element={<People />} />
